@@ -10,14 +10,12 @@ Gem::Specification.new do |s|
   s.authors     = ["Mehmet Cetin"]
   s.email       = ["mcetin.cm@gmail.com"]
   s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Textoken."
+  s.summary     = "Simple and customizable text tokenization gem."
   s.description = "TODO: Description of Textoken."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.2.4"
-
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency 'rspec',   '~> 3.3.0'
+  s.add_development_dependency 'rake',    '~> 10.0'
 end
