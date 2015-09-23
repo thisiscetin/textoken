@@ -13,20 +13,11 @@ describe Textoken::Base do
     expect(t.options).to eq(only: 'alphanumeric')
   end
 
-  it 'should return DefaultTokenizer to tokens when no options present' do
-    t = Textoken::Base.new("Alfa is beta.?\' !alfa", exclude: 'alpha', only: 'beta')
-    expect(t.tokens).to eq('')
+  it 'should return processed text when options not present' do
+    t = Textoken::Base.new('Alfa is beta.')
+    expect(t.tokens).to eq(['Alfa', 'is', 'beta', '.'])
   end
 
-  # it 'should fail when more than one option supplied' do
-  #   expect do
-  #     Textoken::Base.new('Alfa is beta.', only: 'aplhanumeric', 
-  #       exclude: 'numbers').tokens
-  #   end.to raise_error
-  # end
-
-  # it 'should return tokens' do
-  #   t = Textoken::Base.new('Alfa is beta.', only: 'apl').tokens
-  #   expect(t).to eq('')
-  # end
+  skip 'tests with options' do
+  end
 end

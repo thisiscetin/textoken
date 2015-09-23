@@ -1,8 +1,9 @@
 module Textoken
-  # ff
+  # This class exclude user preference in result set. Anything passed as
+  # an argument like only: 'dates' will initialize this class
   class Only < Default
     def tokens
-      ['only', 'exclude']
+      values
     end
   end
 end
