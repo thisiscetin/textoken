@@ -7,7 +7,7 @@ module Textoken
 
     def initialize(text, values = nil)
       @text   = text
-      @values = values.split(',').map(&:strip) if values
+      @values = values
     end
 
     def tokens

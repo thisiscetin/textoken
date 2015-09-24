@@ -1,0 +1,14 @@
+# This file stands for options you can pass as an argument like,
+# only: 'dates, numbers, etc..' or exclude: 'dates'
+
+numbers:
+  # passing for (1,000,000), (0.001)
+  - ^\d{1,3}(,\d{3})*(\.\d+)?$
+  # passing for (1000.0), (001), (.001)
+  - ^\d*\.?\d+$
+
+dates:
+  # mm/dd/yyyy format
+  - ^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$
+  # dd-mm-yyyy format
+  - ^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$

@@ -2,36 +2,29 @@ module Textoken
   # Base class is responsible of sending text and options to related classes
   # as a message. Also combines response with Combinator class
   class Base
-    attr_reader :options, :text, :tokenizers
+    attr_reader :text, :tokenizers
 
-    def initialize(text, options = nil)
+    def initialize(text, opt = nil)
       @text       = text
-      @options    = options
       @tokenizers = []
+      opt.each { |k, v| tokenizers << init_tokenizer(k, v) } if opt
     end
 
     def tokens
-      return Default.new(text).tokens if options.nil?
-      options.each { |k, v| tokenizers << init_tokenizer(k, v) }
-      intersecting_tokens
+      return Default.new(text).tokens if tokenizers.empty?
+      Textoken.intersection(tokens_array)
     end
 
     private
 
-    # this combination allows us to use many options together like
-    # include: 'numbers', exclude: 'dates'
-    def intersecting_tokens
-      Combinator.new(tokenizers.map(&:tokens)).intersections
+    def tokens_array
+      tokenizers.map(&:tokens)
     end
 
     def init_tokenizer(klass_name, value)
       Textoken.const_get(klass_name.capitalize).new(text, value)
     rescue NameError
-      expression_error("#{klass_name}: #{value} is not a valid option.")
-    end
-
-    def expression_error(msg)
-      fail ExpressionError, msg
+      Textoken.expression_error("#{klass_name}: #{value} is not a valid.")
     end
   end
 end

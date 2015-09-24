@@ -10,7 +10,6 @@ describe Textoken::Base do
   it 'options and text has to be readable' do
     t = Textoken::Base.new('Alfa is beta.', only: 'alphanumeric')
     expect(t.text).to eq('Alfa is beta.')
-    expect(t.options).to eq(only: 'alphanumeric')
   end
 
   it 'should return processed text when options not present' do

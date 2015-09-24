@@ -1,5 +1,5 @@
 module Textoken
-  # Combinator takes array or arrays & combines them
+  # Combinator takes array of arrays & combines them
   # and returns intersecting values through intersections method
   class Combinator
     attr_reader :objects
@@ -9,7 +9,7 @@ module Textoken
       @objects  = objects
     end
 
-    def intersections
+    def intersection
       objects.each { |t| @i &= t }
       @i
     end
