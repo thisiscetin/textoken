@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Textoken::Base do
   it 'should init Options on initialize if options present' do
-    options = { less_than: 3, split: 'punctuations' }
+    options = { less_than: 3, seperate: 'punctuations' }
     expect(Textoken::Options).to receive(:new).with(options)
     Textoken::Base.new('', options)
   end

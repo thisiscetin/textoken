@@ -11,7 +11,7 @@ require 'textoken/options/less_than'
 require 'textoken/options/more_than'
 require 'textoken/options/only'
 require 'textoken/options/exclude'
-require 'textoken/options/split'
+require 'textoken/options/seperate'
 
 require 'textoken/factories/option_factory'
 

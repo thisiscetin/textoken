@@ -1,6 +1,6 @@
 module Textoken
   # xx
-  class Split < Option
+  class Seperate < Option
     def priority
       1
     end
@@ -38,7 +38,7 @@ module Textoken
 
     def validate_length
       return if values.split(',').length == 1
-      fail TypeError, 'split option can only have one value.'
+      fail TypeError, 'seperate option can only have one value.'
     end
   end
 end

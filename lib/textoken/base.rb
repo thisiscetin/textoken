@@ -21,7 +21,7 @@ module Textoken
     end
 
     def def_option
-      { split: 'punctuations' }
+      { seperate: 'punctuations' }
     end
 
     def initial_split(text)

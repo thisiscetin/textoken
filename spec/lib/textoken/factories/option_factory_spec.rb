@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Textoken::OptionFactory do
   it 'should return option key as a class' do
-    t = Textoken::OptionFactory.build(:split, 'punctuations')
-    expect(t.class).to eq(Textoken::Split)
+    t = Textoken::OptionFactory.build(:seperate, 'punctuations')
+    expect(t.class).to eq(Textoken::Seperate)
   end
 
   it 'should return option key as a class even if it needs to be camelized' do
