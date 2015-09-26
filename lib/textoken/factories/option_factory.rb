@@ -13,7 +13,7 @@ module Textoken
     end
 
     def self.option_klass(key)
-      Object.const_get('Textoken::' + camelize(key))
+      Object.const_get('Textoken::' + camelize(key), inherit: true)
     rescue NameError
       Textoken.expression_error("#{key}: is not a valid option.")
     end
