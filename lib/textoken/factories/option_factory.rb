@@ -13,15 +13,9 @@ module Textoken
     end
 
     def self.option_klass(key)
-      Object.const_get(klass_name(key))
+      Textoken.const_get(camelize(key).to_sym)
     rescue NameError
       Textoken.expression_error("#{key}: is not a valid option.")
-    end
-
-    def self.klass_name(key)
-      name = 'Textoken::' + camelize(key)
-      name.to_sym if RUBY_VERSION < '2.0.0'
-      name
     end
   end
 end
