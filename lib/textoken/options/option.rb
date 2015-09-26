@@ -1,10 +1,7 @@
 module Textoken
-  # 2 duties;
-  # i- initialize options object with user given options
-  # ii- split-text
-  # iii- return tokens
+  # xx
   class Option
-    attr_reader :values
+    attr_reader :values, :regexps
 
     def initialize(values)
       @values = values
@@ -12,7 +9,8 @@ module Textoken
     end
 
     def post_initialize
-      nil
+      @regexps  = Searchable.new(values).regexps
+      @findings = []
     end
 
     # should be implemented for every option class

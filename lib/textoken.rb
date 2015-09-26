@@ -15,7 +15,7 @@ require 'textoken/options/split'
 
 require 'textoken/factories/option_factory'
 
-# ff
+# xx
 module Textoken
   def self.expression_error(msg)
     fail ExpressionError, msg

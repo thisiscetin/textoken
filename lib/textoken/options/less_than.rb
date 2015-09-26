@@ -1,11 +1,8 @@
 module Textoken
-  # 2 duties;
-  # i- initialize options object with user given options
-  # ii- split-text
-  # iii- return tokens
+  # xx
   class LessThan < Option
     def priority
-      1
+      2
     end
 
     def post_initialize
