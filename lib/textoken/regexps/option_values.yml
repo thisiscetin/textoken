@@ -1,10 +1,18 @@
 # This file stands for options you can pass as an argument like,
 # only: 'dates, numbers, etc..' or exclude: 'dates'
 
+# When only option passed; Matching regexs surrounded by blank space
+# When exclude option passed; Matching regex gets removed from the text
+# At last text gets splitted by blank space and returns user as token collection
+
+punctuations:
+  # punctuations
+  - \W+
+
 numbers:
-  # passing for (1,000,000), (0.001)
+  # for (1,000,000), (0.001)
   - ^\d{1,3}(,\d{3})*(\.\d+)?$
-  # passing for (1000.0), (001), (.001)
+  # for (1000.0), (001), (.001)
   - ^\d*\.?\d+$
 
 dates:

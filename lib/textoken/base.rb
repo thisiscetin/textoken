@@ -1,30 +1,24 @@
 module Textoken
-  # Base class is responsible of sending text and options to related classes
-  # as a message. Also combines response with Combinator class
+  # i- initialize options object with user given options
+  # ii- split-text
+  # iii- return tokens
   class Base
-    attr_reader :text, :tokenizers
+    attr_reader :text, :options
 
     def initialize(text, opt = nil)
-      @text       = text
-      @tokenizers = []
-      opt.each { |k, v| tokenizers << init_tokenizer(k, v) } if opt
+      @text     = initial_split(text)
+      @options  = Options.new(opt) if opt
     end
 
     def tokens
-      return Default.new(text).tokens if tokenizers.empty?
-      Textoken.intersection(tokens_array)
+      return text if options.nil?
+      options.tokenize(text)
     end
 
     private
 
-    def tokens_array
-      tokenizers.map(&:tokens)
-    end
-
-    def init_tokenizer(klass_name, value)
-      Textoken.const_get(klass_name.capitalize).new(text, value)
-    rescue NameError
-      Textoken.expression_error("#{klass_name}: #{value} is not a valid.")
+    def initial_split(text)
+      text.split(' ')
     end
   end
 end

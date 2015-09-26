@@ -4,7 +4,7 @@ describe Textoken::Searchable do
   it 'should initialize successfully' do
     expect do
       Textoken::Searchable.new('dates, numbers')
-    end.not_to raise_error
+    end.to_not raise_error
   end
 
   it 'should raise error when value is not included yml file' do
@@ -16,8 +16,5 @@ describe Textoken::Searchable do
   it 'yaml should be readable' do
     t = Textoken::Searchable.new('dates, numbers')
     expect(t.regexps.count).to eq(4)
-  end
-
-  skip 'add more tests' do
   end
 end

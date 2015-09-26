@@ -1,22 +1,20 @@
 require 'spec_helper'
 
 describe Textoken::Base do
-  it 'should be initializable only by text' do
-    expect do
-      Textoken::Base.new('Alfa is beta.')
-    end.not_to raise_error
+  it 'should init Options on initialize if options present' do
+    options = { less_than: 3 }
+    expect(Textoken::Options).to receive(:new).with(options)
+    Textoken::Base.new('', options)
   end
 
-  it 'options and text has to be readable' do
-    t = Textoken::Base.new('Alfa is beta.', only: 'alphanumeric')
-    expect(t.text).to eq('Alfa is beta.')
+  it 'options should not be init & nil when no user option present' do
+    expect(Textoken::Options).to_not receive(:new)
+    t = Textoken::Base.new('')
+    expect(t.options).to eq(nil)
   end
 
-  it 'should return processed text when options not present' do
-    t = Textoken::Base.new('Alfa is beta.')
-    expect(t.tokens).to eq(['Alfa', 'is', 'beta', '.'])
-  end
-
-  skip 'tests with options' do
+  it 'should return basic splitted text when no option present' do
+    t = Textoken::Base.new('Alfa beta.')
+    expect(t.tokens).to eq(['Alfa', 'beta.'])
   end
 end
