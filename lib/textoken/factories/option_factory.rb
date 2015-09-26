@@ -19,8 +19,9 @@ module Textoken
     end
 
     def self.klass_name(key)
-      name = camelize(key)
-      RUBY_VERSION < "2.0.0" ? name.to_sym : 'Textoken::' + name
+      name = 'Textoken::' + camelize(key)
+      name.to_sym if RUBY_VERSION < '2.0.0'
+      name
     end
   end
 end
