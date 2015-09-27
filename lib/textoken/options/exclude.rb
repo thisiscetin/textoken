@@ -1,25 +1,14 @@
 module Textoken
-  # xx
+  # This option object excludes words in text via matching regexp
+  # Non-excluded words pushed to findings array
+  # The public interface of this class is in ConditionalOption module
   class Exclude < Option
-    def priority
-      3
-    end
-
-    def tokenize(text_arr)
-      regexps.each do |r|
-        find_words(text_arr, Regexp.new(r))
-      end
-      @findings
-    end
-
+    include ConditionalOption
+    
     private
 
     def find_words(text_arr, regex)
       text_arr.each { |w| @findings << w if scan(regex, w).empty? }
-    end
-
-    def scan(regex, word)
-      word.scan(regex)
     end
   end
 end

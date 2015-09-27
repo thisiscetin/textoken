@@ -6,16 +6,16 @@ describe Textoken::Options do
   end
 
   it 'should be initializable with valid option' do
-    init_without_error(seperate: 'punctuations')
+    init_without_error(split: 'punctuations')
   end
 
   it 'should be initializable by many valid options' do
-    init_without_error(seperate: 'punctuations', exclude: 'numbers', more_than: 3)
+    init_without_error(split: 'punctuations', exclude: 'numbers', more_than: 3)
   end
 
   it 'should sort options by their priority' do
     t = Textoken::Options.new(options)
-    expect(t.options[0].class).to eq(Textoken::Seperate)
+    expect(t.options[0].class).to eq(Textoken::Split)
     expect(t.options[1].class).to eq(Textoken::LessThan)
     expect(t.options[2].class).to eq(Textoken::Only)
   end
@@ -35,7 +35,7 @@ describe Textoken::Options do
   def options
     {
       only:       'dates',
-      seperate:   'punctuations',
+      split:   'punctuations',
       less_than:  2
     }
   end

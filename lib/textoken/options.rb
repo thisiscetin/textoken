@@ -1,7 +1,7 @@
 module Textoken
-  # i- init options with factory
-  # ii- sort option collection according to priority
-  # iii- pass tokenize to collection one by one
+  # inits options with factory
+  # sorts option collection according to priority
+  # responds to tokenize for collection one by one
   class Options
     attr_reader :options
 
@@ -11,6 +11,7 @@ module Textoken
       sort_options
     end
 
+    # tokenize stops if words array length converges to 0
     def tokenize(arr)
       options.each do |opt|
         break if arr.nil? || arr.length == 0

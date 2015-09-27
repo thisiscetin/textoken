@@ -1,5 +1,6 @@
 module Textoken
-  # xx
+  # Inits options and responds to tokens
+  # Default option for Textoken is split: 'punctuations'
   class Base
     attr_reader :text, :options
 
@@ -21,7 +22,7 @@ module Textoken
     end
 
     def def_option
-      { seperate: 'punctuations' }
+      { split: 'punctuations' }
     end
 
     def initial_split(text)

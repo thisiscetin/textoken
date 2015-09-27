@@ -1,13 +1,10 @@
 module Textoken
-  # xx
-  class Seperate < Option
+  # Finds matching regexps and splits them
+  # When a matching regexps found the word gets splitted by space
+  # Words Array merges splitted array
+  class Split < Option
     def priority
       1
-    end
-
-    def post_initialize
-      super
-      validate_length
     end
 
     def tokenize(text_arr)
@@ -26,19 +23,14 @@ module Textoken
       end
     end
 
-    def push_and_split(word, index)
-      word.insert(index, ' ').split(' ')
-    end
-
     def replace_word(text, i, new_words)
       text.delete_at(i)
       new_words.reverse_each { |w| text.insert(i, w) }
       text
     end
-
-    def validate_length
-      return if values.split(',').length == 1
-      fail TypeError, 'seperate option can only have one value.'
+    
+    def push_and_split(word, index)
+      word.insert(index, ' ').split(' ')
     end
   end
 end

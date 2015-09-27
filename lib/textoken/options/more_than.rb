@@ -1,13 +1,9 @@
 module Textoken
-  # xx
+  # This option validates positive numericality
+  # Removes words in text_arr with a length condition
+  # Validation and post_initialization held in NumbericOption module
   class MoreThan < Option
-    def priority
-      2
-    end
-
-    def post_initialize
-      validates_positive_numericality
-    end
+    include NumericOption
 
     def tokenize(text_arr)
       text_arr.select { |text| text.length > values }

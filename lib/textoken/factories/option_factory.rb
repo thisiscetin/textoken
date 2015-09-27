@@ -1,6 +1,7 @@
 module Textoken
-  # camelize input
-  # create option if option is avaliable
+  # This factory created option objects throug user input option
+  # User input option like 'more_than: 3' (more_than) gets camelized
+  # and objects get initialized with error handling
   module OptionFactory
     def self.build(key, value)
       option_klass(key).new(value)
@@ -15,7 +16,7 @@ module Textoken
     def self.option_klass(key)
       Textoken.const_get(camelize(key).to_sym)
     rescue NameError
-      Textoken.expression_error("#{key}: is not a valid option.")
+      Textoken.expression_err("#{key}: is not a valid option.")
     end
   end
 end

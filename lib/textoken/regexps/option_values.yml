@@ -1,19 +1,23 @@
 # This file stands for options you can pass as an argument like,
 # only: 'dates, numbers, etc..' or exclude: 'dates'
 
-# When only option passed; Matching regexs surrounded by blank space
-# When exclude option passed; Matching regex gets removed from the text
-# At last text gets splitted by blank space and returns user as token collection
+# When only option passed; Matching regexs gets collected from tokens array
+# When exclude option passed; Matching regex gets removed from tokens text
+# When split option passed; Matching regex gets splitted and inserted to tokens
+
+# You can add many regexps under one type, all of them will be searched
 
 punctuations:
   # punctuations
   - \W+
 
 numbers:
-  # for (1,000,000), (0.001)
-  - ^\d{1,3}(,\d{3})*(\.\d+)?$
-  # for (1000.0), (001), (.001)
-  - ^\d*\.?\d+$
+  - (?:\d*\.)?\d+
+  - (?:\d*\,)?\d+
+
+phones:
+  # covers p:444-555-1234 f:246.555.8888 m:1235554567
+  - \b\d{3}[-.]?\d{3}[-.]?\d{4}\b
 
 dates:
   # mm/dd/yyyy format
