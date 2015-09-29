@@ -21,6 +21,7 @@ require 'textoken/factories/option_factory'
 # Textoken is a library for customizable tokenization of texts.
 # Customizable tokenization can be used in many areas including NLP purposes
 module Textoken
+  GEM_ROOT = File.expand_path("../..", __FILE__)
   # Expression error raised in wrong user input of options & values
   def self.expression_err(msg)
     fail ExpressionError, msg

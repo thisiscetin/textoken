@@ -6,7 +6,7 @@ module Textoken
 
     def initialize(values)
       @values = values.split(',').map(&:strip)
-      @yaml   = YAML.load_file('lib/textoken/regexps/option_values.yml')
+      @yaml   = YAML.load_file("#{GEM_ROOT}/lib/textoken/regexps/option_values.yml")
       @regexs = []
     end
 
