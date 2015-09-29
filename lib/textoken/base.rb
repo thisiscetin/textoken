@@ -1,32 +1,24 @@
 module Textoken
-  # Inits options and responds to tokens
-  # Default option for Textoken is split: 'punctuations'
+  # Inits options, findings and responds to tokens
+  # Does not raise error when text or options are nil
+  # Splits the text and makes it ready for other operations
   class Base
-    attr_reader :text, :options
+    attr_reader :text, :options, :findings
 
     def initialize(text, opt = nil)
       @text     = initial_split(text)
-      @options  = Options.new(init_options(opt))
+      @options  = Options.new(opt)
+      @findings = Findings.new
     end
 
     def tokens
-      return text if options.nil?
-      options.tokenize(text)
+      Tokenizer.new(self).tokens
     end
 
     private
 
-    # by default splits punctuations
-    def init_options(opt)
-      opt ? def_option.merge!(opt) : def_option
-    end
-
-    def def_option
-      { split: 'punctuations' }
-    end
-
     def initial_split(text)
-      text.split(' ')
+      text ? text.split(' ') : []
     end
   end
 end

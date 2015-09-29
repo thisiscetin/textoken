@@ -1,14 +1,46 @@
 require 'spec_helper'
 
 describe Textoken::Base do
-  it 'should init Options on initialize if options present' do
-    options = { less_than: 3, split: 'punctuations' }
-    expect(Textoken::Options).to receive(:new).with(options)
-    Textoken::Base.new('', options)
+  describe 'initialization of class' do
+    it 'should initialize with no options' do
+      expect do
+        init('')
+      end.to_not raise_error
+    end
+
+    it 'should initialize with no text' do
+      expect do
+        init
+      end.to_not raise_error
+    end
+
+    it 'should split the text' do
+      expect(init('Alfa beta.').text).to eq(%w(Alfa beta.))
+    end
+
+    it 'should init findings & options' do
+      expect(init('').findings.class).to eq(Textoken::Findings)
+      expect(init('').options.class).to eq(Textoken::Options)
+    end
   end
 
-  it 'should return basic splitted text when no option present' do
-    t = Textoken::Base.new('Alfa beta.')
-    expect(t.tokens).to eq(['Alfa', 'beta', '.'])
+  describe 'should respond to tokens as expected' do
+    context 'should not raise an error' do
+      it 'when no text present' do
+        expect do
+          init.tokens
+        end.to_not raise_error
+      end
+
+      it 'when no option present' do
+        expect do
+          init('Alfa beta.').tokens
+        end.to_not raise_error
+      end
+    end
+  end
+
+  def init(text = nil, opt = nil)
+    Textoken::Base.new(text, opt)
   end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Textoken::Searchable do
+describe Textoken::Searcher do
   it 'should initialize successfully' do
     expect do
       Textoken::Searchable.new('dates, numbers')
