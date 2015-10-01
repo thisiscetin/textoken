@@ -7,6 +7,7 @@ require 'textoken/searcher'
 require 'textoken/options'
 require 'textoken/findings'
 require 'textoken/tokenizer'
+require 'textoken/scanner'
 
 require 'textoken/options/modules/numeric_option'
 require 'textoken/options/modules/conditional_option'
@@ -35,6 +36,11 @@ module Textoken
     # is not suitable for option
     def type_err(msg)
       fail TypeError, msg
+    end
+
+    # Inheritence error raised when..
+    def inheritence_err(msg)
+      fail InheritenceError, msg
     end
   end
 end

@@ -19,11 +19,16 @@ module Textoken
       @collection.uniq(&:first).sort_by(&:first)
     end
 
+    # result will return a one dimensional array of words
+    def result
+      collection.map(&:last)
+    end
+
     private
 
     def type_check(i, word)
       return if word.is_a?(String) && (i.is_a?(Fixnum) || i.is_a?(Float))
-      Textoken.type_err("#{word} and #{index} has to be a String and Integer")
+      Textoken.type_err("#{word} and #{i} has to be a String and Integer")
     end
   end
 end

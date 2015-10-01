@@ -4,10 +4,14 @@ module Textoken
   class Only < Option
     include ConditionalOption
 
-    private
+    def tokenize(base)
+      base.text.each_with_index do |w, i|
 
-    def find_words(text, regex)
-      text.each { |w| @findings += scan(regex, w) }
+      end
+    end
+
+    def regexp
+      
     end
   end
 end

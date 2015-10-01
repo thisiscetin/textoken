@@ -12,7 +12,7 @@ module Textoken
     end
 
     def tokens
-      # tokenize each option here
+      options.each { |option| option.tokenize(self) }
       Tokenizer.new(self).tokens
     end
 

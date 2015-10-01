@@ -14,6 +14,7 @@ module Textoken
     end
 
     def self.option_klass(key)
+      # add a module to make other classes unaccessible
       Textoken.const_get(camelize(key).to_sym)
     rescue NameError
       Textoken.expression_err("#{key}: is not a valid option.")
