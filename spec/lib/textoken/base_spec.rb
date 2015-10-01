@@ -40,6 +40,9 @@ describe Textoken::Base do
     end
   end
 
+  skip 'tokens_unsplitted' do
+  end
+
   def init(text = nil, opt = nil)
     Textoken::Base.new(text, opt)
   end
