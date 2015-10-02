@@ -12,7 +12,7 @@ module Textoken
 
     def regexps
       match_keys
-      @regexps
+      @regexps.map.each { |r| Regexp.new(r) }
     end
 
     private
@@ -33,7 +33,7 @@ module Textoken
     def match_keys
       values.each do |v|
         Textoken.expression_err("#{v}: is not permitted.") unless yaml.key?(v)
-        add_regexps(Regexp.new(yaml[v]))
+        add_regexps(yaml[v])
       end
     end
 

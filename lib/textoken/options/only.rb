@@ -4,14 +4,13 @@ module Textoken
   class Only < Option
     include ConditionalOption
 
+    # base.text is raw tokens splitted with ' '
+    # values are Regexps array to search
+    # base.findings, Findings object for pushing matching tokens
     def tokenize(base)
       base.text.each_with_index do |w, i|
-
+        base.findings.push(i, w)
       end
-    end
-
-    def regexp
-      
     end
   end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Textoken::Searcher, focus: true do
+describe Textoken::Searcher do
   describe 'initialize' do
     context 'when values are in correct form' do
       it 'supports single value' do
