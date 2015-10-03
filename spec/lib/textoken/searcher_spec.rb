@@ -45,15 +45,4 @@ describe Textoken::Searcher do
       end.to raise_error(Textoken::ExpressionError)
     end
   end
-
-  describe 'regexps' do
-    skip 'when values are not found in YML file' do
-    end
-
-    skip 'when some variables not found in YML file' do
-    end
-
-    skip 'when values are found' do
-    end
-  end
 end

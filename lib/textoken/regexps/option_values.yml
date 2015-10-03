@@ -1,17 +1,13 @@
 # This file stands for options you can pass as an argument like,
 # only: 'dates, numbers, etc..' or exclude: 'dates'
 
-# When only option passed; Matching regexs gets collected from tokens array
-# When exclude option passed; Matching regex gets removed from tokens text
-# When split option passed; Matching regex gets splitted and inserted to tokens
-
-# You can add many regexps under one type, all of them will be searched
+# You can add many regexps under one type, all of them will be searchable
 
 punctuations:
   # punctuations
   - \W+
 
-numbers:
+numerics:
   - (?:\d*\.)?\d+
   - (?:\d*\,)?\d+
 

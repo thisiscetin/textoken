@@ -39,11 +39,11 @@ describe Textoken::Findings do
       expect(t.collection).to eq([[1, 'Alfa'], [2, 'Beta'], [3, 'Teta']])
     end
 
-    it 'returns a unique array under index' do
+    it 'returns a unique array under index&word' do
       t = Textoken::Findings.new
       push_many(t, [1, 'Alfa'], [1, 'Beta'], [2, 'Teta'])
-      expect(t.collection.length).to eq(2)
-      expect(t.collection).to eq([[1, 'Alfa'], [2, 'Teta']])
+      expect(t.collection.length).to eq(3)
+      expect(t.collection).to eq([[1, 'Alfa'], [1, 'Beta'], [2, 'Teta']])
     end
   end
 

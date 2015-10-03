@@ -16,7 +16,7 @@ module Textoken
 
     # collection will return a sorted and unique array of tokens
     def collection
-      @collection.uniq(&:first).sort_by(&:first)
+      @collection.uniq { |w| w[0].to_s + w[1] }.sort_by(&:first)
     end
 
     # result will return a one dimensional array of words

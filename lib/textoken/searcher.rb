@@ -1,6 +1,7 @@
 module Textoken
   # This class reads YAML file under searchables/values,
   # returns array of regexps representing values passed as an argument
+  # todo: add regexp support
   class Searcher
     attr_reader :values, :yaml
 

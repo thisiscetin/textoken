@@ -3,20 +3,26 @@ module Textoken
   # Does not raise error when text or options are nil
   # Splits the text and makes it ready for other operations
   class Base
-    attr_reader :text, :options, :findings, :dont_split
+    attr_reader :text, :dont_split, :findings
 
     def initialize(text, opt = nil)
       @text     = initial_split(text)
       @options  = Options.new(opt)
-      @findings = Findings.new
     end
 
     def tokens
-      options.each { |option| option.tokenize(self) }
+      @options.collection.each do |option|
+        if @findings.nil?
+          @findings = option.tokenize(self)
+        else
+          @findings &= option.tokenize(self)
+        end
+      end
+
       Tokenizer.new(self).tokens
     end
 
-    def tokens_unsplitted
+    def words
       # tokenize options but do not make the last split
       @dont_split = true
       tokens

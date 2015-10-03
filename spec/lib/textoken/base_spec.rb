@@ -1,31 +1,31 @@
 require 'spec_helper'
 
 describe Textoken::Base do
-  describe 'initialization of class' do
-    it 'should initialize with no options' do
+  describe '#initialization' do
+    it 'with no options does not raise error' do
       expect do
         init('')
       end.to_not raise_error
     end
 
-    it 'should initialize with no text' do
+    it 'with no text does not raise error' do
       expect do
         init
       end.to_not raise_error
     end
 
-    it 'should split the text' do
+    it 'initially splits the text' do
       expect(init('Alfa beta.').text).to eq(%w(Alfa beta.))
     end
 
-    it 'should init findings & options' do
+    it 'inits findings & options as expected' do
       expect(init('').findings.class).to eq(Textoken::Findings)
       expect(init('').options.class).to eq(Textoken::Options)
     end
   end
 
-  describe 'should respond to tokens as expected' do
-    context 'should not raise an error' do
+  describe '#tokens' do
+    context 'does not raise an error' do
       it 'when no text present' do
         expect do
           init.tokens
@@ -40,7 +40,20 @@ describe Textoken::Base do
     end
   end
 
-  skip 'tokens_unsplitted' do
+  describe '#words' do
+    context 'does not raise an error' do
+      it 'when no text present' do
+        expect do
+          init.words
+        end.to_not raise_error
+      end
+
+      it 'when no option present' do
+        expect do
+          init('Alfa beta.').words
+        end.to_not raise_error
+      end
+    end
   end
 
   def init(text = nil, opt = nil)

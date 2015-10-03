@@ -11,7 +11,7 @@ module Textoken
     end
 
     def tokens
-      return base.findings.result if base.dont_split
+      return base.findings if base.dont_split
       split_punctuations
       @result
     end
@@ -19,8 +19,8 @@ module Textoken
     private
 
     def split_punctuations
-      base.findings.collection.each do |w|
-        @result += Scanner.new(w[1], default_regexp).result
+      base.findings.each do |w|
+        @result += Scanner.new(w, default_regexp).result
       end
     end
 

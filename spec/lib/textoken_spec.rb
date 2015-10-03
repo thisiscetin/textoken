@@ -1,45 +1,60 @@
 require 'spec_helper'
 
 describe Textoken do
-  it 'should initialize lib/base class through Textoken' do
-    expect(Textoken('Some text').class).to eq(Textoken::Base)
+  describe '#initialize' do
+    it 'lib/base class through Textoken' do
+      expect(Textoken('Some text').class).to eq(Textoken::Base)
+    end
+
+    context 'with unpermitted options' do
+      it 'tokens raise Expression error' do
+        expect do
+          tokens('Some text', dumy: 'value')
+        end.to raise_error(Textoken::ExpressionError)
+      end
+
+      it 'words raise Expression error' do
+        expect do
+          words('Some text', dumy: 'value')
+        end.to raise_error(Textoken::ExpressionError)
+      end
+    end
   end
 
-  it 'should raise ExpressionError with unpermitted options' do
-    expect do
-      textoken(dumy: 'value')
-    end.to raise_error(Textoken::ExpressionError)
+  describe 'Multiple Options' do
+    context 'only & more_than' do
+      it 'returns tokens as expected' do
+        e = %w(saying , $ 400)
+        expect(tokens(TEXT0, only: 'numerics', more_than: 3)).to eq(e)
+      end
+    end
+
+    context 'exlcude & more_than' do
+      it 'returns tokens as expected' do
+        e = %w(saying , $ 400)
+        expect(tokens(TEXT0, exclude: 'numerics', less_than: 5)).to eq(e)
+      end
+
+      # it 'returns words as expected' do
+      #   e = %w(saying, $400 blender something)
+      #   expect(words(TEXT0, only: 'numerics', more_than: 6)).to eq(e)
+      # end
+    end
   end
 
-  it 'should return tokens with more_than option' do
-    expected_result = %w(exercitationem reprehenderit)
-    expect(textoken(more_than: 12)).to eq(expected_result)
+  def tokens(text, options)
+    Textoken(text, options).tokens
   end
 
-  it 'should return tokens with less_than option' do
-    expected_result = %w(, . ?)
-    expect(textoken(less_than: 2).uniq).to eq(expected_result)
+  def words(text, options)
+    Textoken(text, options).words
   end
 
-  it 'should return tokens when less_than & more_than combined' do
-    expected_result = %w(perspiciatis consequuntur)
-    expect(textoken(less_than: 13, more_than: 11)).to eq(expected_result)
-  end
+  TEXT0 = 'Oh, no,\" she\'s saying, "our $400 blender can\'t handle something
+  this hard!'
 
-  def textoken(options)
-    Textoken(TEXT, options).tokens
+  # After adding a regexp value to option_values.yml
+  # Corresponding test can be done under singe options
+  describe 'Single Options' do
   end
-
-  TEXT = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-  accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-  inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-  sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-  Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-  adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
-  dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-  nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
-  ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
-  voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
-  eum fugiat quo voluptas nulla pariatur?'
 end

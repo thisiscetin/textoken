@@ -4,7 +4,7 @@ require 'coveralls'
 Coveralls.wear!
 
 RSpec.configure do |config|
-  config.filter_run focus: true
+  # config.filter_run focus: true
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

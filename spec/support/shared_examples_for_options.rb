@@ -1,43 +1,24 @@
-RSpec.shared_examples "an option" do |values|
-  subject { described_class.new(values) }
+RSpec.shared_examples 'regexp dependent option' do
+  describe '#initialize' do
+    context 'when value is a reserved keyword from yml' do
+      it 'does not raise an error' do
+        expect do
+          described_class.new('phones')
+        end.to_not raise_error
+      end
 
-  it 'should be inherited from option' do
-    expect(described_class).to be < Textoken::Option
-  end
+      it 'does store Regexps in an array' do
+        t = described_class.new('punctuations')
+        expect(t.regexps).to eq([Regexp.new('\W+')])
+      end
+    end
 
-  it { should respond_to(:priority) }
-  it { should respond_to(:tokenize) }
-  it { should respond_to(:post_initialize) }
-end
-
-RSpec.shared_examples "a numeric option" do
-  it 'should be initializable with an integer' do
-    validate_numericality_without_error(3)
-  end
-
-  it 'should raise errors in initialization for non-integers' do
-    validate_numericality_with_error('1, 2')
-  end
-
-  it 'should raise error when value integer = 0' do
-    validate_numericality_with_error(0)
-  end
-
-  it 'should raise error when value integer is negative' do
-    validate_numericality_with_error(-1)
-  end
-
-  def validate_numericality_with_error(value)
-    init_numericality(value).to raise_error(Textoken::TypeError)
-  end
-
-  def validate_numericality_without_error(value)
-    init_numericality(value).to_not raise_error
-  end
-
-  def init_numericality(value)
-    expect do
-      Textoken::LessThan.new(value)
+    context 'when value is not String object' do
+      it 'raises a TypeError' do
+        expect do
+          described_class.new(Object)
+        end.to raise_error(Textoken::ExpressionError)
+      end
     end
   end
 end

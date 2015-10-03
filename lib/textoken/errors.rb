@@ -4,7 +4,4 @@ module Textoken
 
   class TypeError < Exception
   end
-
-  class InheritenceError < Exception
-  end
 end
