@@ -4,6 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/manorie/textoken/badge.svg?branch=development&service=github)](https://coveralls.io/github/manorie/textoken?branch=development)
 [![Code Climate](https://codeclimate.com/github/manorie/textoken/badges/gpa.svg)](https://codeclimate.com/github/manorie/textoken)
 [![Dependency Status](https://gemnasium.com/manorie/textoken.svg)](https://gemnasium.com/manorie/textoken)
+[![Gem Version](https://badge.fury.io/rb/textoken.svg)](http://badge.fury.io/rb/textoken)
 
 Textoken is a Ruby library for text tokenization. This gem extracts words from text with many customizations. It can be used in many fields like crawling and Natural Language Processing.
 
@@ -33,21 +34,46 @@ Textoken('Oh, no! Alfa is at home.', only: 'punctuations').tokens
 Textoken('Oh, no! Alfa is at home.', only: 'punctuations', more_than: 3).tokens
 # => ["home", "."]
 
-Textoken('Oh, no! Alfa is at 01/01/2000.', only: 'dates, numerics').words
-# => ["01/01/2000."]
+Textoken('Oh, no! Alfa is at 01/01/2000 with $1000.', only: 'dates, numerics').words
+# => ["01/01/2000", "$1000."]
 ```
 
-You can combine all options.
-Options support multiple option values like only: 'punctuations, dates, numerics'
+You can combine all options. Options support multiple option values like **only: 'punctuations, dates, numerics'**
+
+Public interface of Textoken presents two methods, tokens & word;
+
+```ruby
+Textoken('Alfa.').tokens 
+# => ["Alfa", "."]
+# => splits punctuations by default whereas,
+
+Textoken('Alfa.').words 
+# => ["Alfa."]
+# => does not split punctuations.
+```
 
 ## Current Options
 
-only:       accepts any regexp defined in option_values.yml.
-exclude:    accepts any regexp defined in option_values.yml.
-less_than:  accepts any integer bigger than 1
-more_than:  accepts any positive integer
+**only:** accepts any regexp defined in [option_values.yml](//github.com/manorie/textoken/blob/development/lib/textoken/regexps/option_values.yml)
 
-only_regexp, exclude_regexp and part-of-speech options are on the agenda.
+**exclude:** accepts any regexp defined in [option_values.yml](https://github.com/manorie/textoken/blob/development/lib/textoken/regexps/option_values.yml)
+
+**less_than:** accepts any integer bigger than 1
+
+**more_than:** accepts any positive integer
+
+**only_regexp:** , **exclude_regexp** , and **part-of-speech** options are on the agenda.
+
+## Option Meanings
+
+**only:** If a word in text consist of a regexp or regexps, only option includes it in result.
+
+**exclude:** If a word in text does not have a regexp at some part, exclude option excludes it from result. Opposite of only.
+
+**less_than:** Filters result by the word length less than the option value given.
+
+**more_than:** Filters result by the word length bigger than the option value given.
+
 
 ## Installation
 
