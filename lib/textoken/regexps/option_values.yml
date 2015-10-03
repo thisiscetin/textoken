@@ -1,0 +1,22 @@
+# This file stands for options you can pass as an argument like,
+# only: 'dates, numbers, etc..' or exclude: 'dates'
+
+# You can add many regexps under one type, all of them will be searchable
+
+punctuations:
+  # punctuations
+  - \W+
+
+numerics:
+  - (?:\d*\.)?\d+
+  - (?:\d*\,)?\d+
+
+phones:
+  # covers p:444-555-1234 f:246.555.8888 m:1235554567
+  - \b\d{3}[-.]?\d{3}[-.]?\d{4}\b
+
+dates:
+  # mm/dd/yyyy format
+  - ^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$
+  # dd-mm-yyyy format
+  - ^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$

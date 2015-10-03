@@ -1,37 +1,37 @@
 module Textoken
-  # Base class is responsible of sending text and options to related classes
-  # as a message. Also combines response with Combinator class
+  # Inits options, findings and responds to tokens
+  # Does not raise error when text or options are nil
+  # Splits the text and makes it ready for other operations
   class Base
-    attr_reader :options, :text, :tokenizers
+    attr_reader :text, :dont_split, :findings, :options
 
-    def initialize(text, options = nil)
-      @text       = text
-      @options    = options
-      @tokenizers = []
+    def initialize(text, opt = nil)
+      @text     = initial_split(text)
+      @options  = Options.new(opt)
     end
 
     def tokens
-      return Default.new(text).tokens if options.nil?
-      options.each { |k, v| tokenizers << init_tokenizer(k, v) }
-      intersecting_tokens
+      options.collection.each do |option|
+        if @findings.nil?
+          @findings = option.tokenize(self)
+        else
+          @findings &= option.tokenize(self)
+        end
+      end
+
+      Tokenizer.new(self).tokens
+    end
+
+    def words
+      # tokenize options but do not make the last split
+      @dont_split = true
+      tokens
     end
 
     private
 
-    # this combination allows us to use many options together like
-    # include: 'numbers', exclude: 'dates'
-    def intersecting_tokens
-      Combinator.new(tokenizers.map(&:tokens)).intersections
-    end
-
-    def init_tokenizer(klass_name, value)
-      Textoken.const_get(klass_name.capitalize).new(text, value)
-    rescue NameError
-      expression_error("#{klass_name}: #{value} is not a valid option.")
-    end
-
-    def expression_error(msg)
-      fail ExpressionError, msg
+    def initial_split(text)
+      text ? text.split(' ') : []
     end
   end
 end

@@ -1,23 +1,61 @@
 require 'spec_helper'
 
 describe Textoken::Base do
-  it 'should be initializable only by text' do
-    expect do
-      Textoken::Base.new('Alfa is beta.')
-    end.not_to raise_error
+  describe '#initialization' do
+    it 'with no options does not raise error' do
+      expect do
+        init('')
+      end.to_not raise_error
+    end
+
+    it 'with no text does not raise error' do
+      expect do
+        init
+      end.to_not raise_error
+    end
+
+    it 'initially splits the text' do
+      expect(init('Alfa beta.').text).to eq(%w(Alfa beta.))
+    end
+
+    it 'inits findings & options as expected' do
+      expect(init('').options.class).to eq(Textoken::Options)
+    end
   end
 
-  it 'options and text has to be readable' do
-    t = Textoken::Base.new('Alfa is beta.', only: 'alphanumeric')
-    expect(t.text).to eq('Alfa is beta.')
-    expect(t.options).to eq(only: 'alphanumeric')
+  describe '#tokens' do
+    context 'does not raise an error' do
+      it 'when no text present' do
+        expect do
+          init.tokens
+        end.to_not raise_error
+      end
+
+      it 'when no option present' do
+        expect do
+          init('Alfa beta.').tokens
+        end.to_not raise_error
+      end
+    end
   end
 
-  it 'should return processed text when options not present' do
-    t = Textoken::Base.new('Alfa is beta.')
-    expect(t.tokens).to eq(['Alfa', 'is', 'beta', '.'])
+  describe '#words' do
+    context 'does not raise an error' do
+      it 'when no text present' do
+        expect do
+          init.words
+        end.to_not raise_error
+      end
+
+      it 'when no option present' do
+        expect do
+          init('Alfa beta.').words
+        end.to_not raise_error
+      end
+    end
   end
 
-  skip 'tests with options' do
+  def init(text = nil, opt = nil)
+    Textoken::Base.new(text, opt)
   end
 end
