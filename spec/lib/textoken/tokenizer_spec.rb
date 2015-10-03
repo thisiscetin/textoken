@@ -19,11 +19,7 @@ describe Textoken::Tokenizer do
     end
 
     context 'should return expected tokens' do
-      it 'when dont_split is true' do
-      end
-
-      it 'when dont_split option is nil' do
-      end
+      #will be tested in textoken_spec
     end
   end
 end

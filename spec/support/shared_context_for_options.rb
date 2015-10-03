@@ -1,5 +1,6 @@
 RSpec.shared_context 'base mock' do
-  let(:base)      { double('option') }
+  let(:base)      { double('base', options: options, text: []) }
+  let(:options)   { double('options', collection: []) }
   let(:findings)  { double('findings') }
 
   def init_mocks(text_arr = [], expectations = [])

@@ -11,7 +11,8 @@ Gem::Specification.new do |s|
   s.email       = ["mcetin.cm@gmail.com"]
   s.homepage    = "https://github.com/manorie/textoken"
   s.summary     = "Simple and customizable text tokenization gem."
-  s.description = "Textoken extracts words from text with many customizations."
+  s.description = "Textoken extracts words from text with many customizations. 
+  It can be used for many purposes, including NLP."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]

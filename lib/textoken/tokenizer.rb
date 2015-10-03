@@ -3,15 +3,16 @@ module Textoken
   # Takes findings objects and makes finishing punctuation split
   # Does not split if base.dont_split is true
   class Tokenizer
-    attr_reader :base, :result
+    attr_reader :base, :result, :col
 
     def initialize(base)
-      @base     = base
-      @result   = []
+      @base    = base
+      @result  = []
+      @col     = base.options.collection.length > 0 ? base.findings : base.text
     end
 
     def tokens
-      return base.findings if base.dont_split
+      return col if base.dont_split
       split_punctuations
       @result
     end
@@ -19,9 +20,8 @@ module Textoken
     private
 
     def split_punctuations
-      return if base.findings.nil?
-      base.findings.each do |w|
-        @result += Scanner.new(w, default_regexp).result
+      col.each do |w|
+        @result += Scanner.new(w, default_regexp).result || [w]
       end
     end
 

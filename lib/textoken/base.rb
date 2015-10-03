@@ -10,6 +10,8 @@ module Textoken
       @options  = Options.new(opt)
     end
 
+    # we do take intersection array of results
+    # returning from multiple options
     def tokens
       options.collection.each do |option|
         if @findings.nil?
