@@ -19,7 +19,6 @@ describe Textoken::Base do
     end
 
     it 'inits findings & options as expected' do
-      expect(init('').findings.class).to eq(Textoken::Findings)
       expect(init('').options.class).to eq(Textoken::Options)
     end
   end

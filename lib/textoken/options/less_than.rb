@@ -1,10 +1,11 @@
 module Textoken
-  # xx
+  # This option object picks words in text with less than length
+  # of the option value
   class LessThan
     attr_reader :number, :findings
 
     def priority
-      1
+      2
     end
 
     def initialize(value)

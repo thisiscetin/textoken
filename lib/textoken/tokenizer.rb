@@ -19,6 +19,7 @@ module Textoken
     private
 
     def split_punctuations
+      return if base.findings.nil?
       base.findings.each do |w|
         @result += Scanner.new(w, default_regexp).result
       end

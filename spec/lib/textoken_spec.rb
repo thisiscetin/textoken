@@ -24,21 +24,26 @@ describe Textoken do
   describe 'Multiple Options' do
     context 'only & more_than' do
       it 'returns tokens as expected' do
-        e = %w(saying , $ 400)
+        e = %w($ 400)
         expect(tokens(TEXT0, only: 'numerics', more_than: 3)).to eq(e)
+      end
+
+      it 'returns words as expected' do
+        e = %w($400)
+        expect(words(TEXT0, only: 'numerics', more_than: 3)).to eq(e)
       end
     end
 
     context 'exlcude & more_than' do
       it 'returns tokens as expected' do
-        e = %w(saying , $ 400)
+        e = %w(Oh , " our)
         expect(tokens(TEXT0, exclude: 'numerics', less_than: 5)).to eq(e)
       end
 
-      # it 'returns words as expected' do
-      #   e = %w(saying, $400 blender something)
-      #   expect(words(TEXT0, only: 'numerics', more_than: 6)).to eq(e)
-      # end
+      it 'returns words as expected' do
+        e = %w(blender handle something this)
+        expect(words(TEXT0, exclude: 'punctuations', more_than: 1)).to eq(e)
+      end
     end
   end
 

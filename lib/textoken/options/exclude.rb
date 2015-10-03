@@ -1,12 +1,11 @@
 module Textoken
   # This option object excludes words in text via matching regexp
   # Non-excluded words pushed to findings array
-  # The public interface of this class is in ConditionalOption module
   class Exclude
     attr_reader :regexps, :findings
 
     def priority
-      2
+      1
     end
 
     def initialize(values)

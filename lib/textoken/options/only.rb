@@ -5,7 +5,7 @@ module Textoken
     attr_reader :regexps, :findings
 
     def priority
-      2
+      1
     end
 
     def initialize(values)
