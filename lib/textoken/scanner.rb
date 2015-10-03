@@ -12,7 +12,7 @@ module Textoken
 
     def result
       scan = word.scan(regexp)
-      scan.length > 0 ? partition(scan, word) : []
+      scan.length > 0 ? partition(scan, word) : nil
     end
 
     private

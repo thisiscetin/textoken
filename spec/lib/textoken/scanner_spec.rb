@@ -26,9 +26,9 @@ describe Textoken::Scanner do
   end
 
   describe '#result' do
-    it 'should return an empty array when no matches found' do
+    it 'should return nil when no matches found' do
       s = Textoken::Scanner.new('Alfa', regexp)
-      expect(s.result).to eq([])
+      expect(s.result).to eq(nil)
     end
 
     it 'should return an array of strings including punctuation' do
