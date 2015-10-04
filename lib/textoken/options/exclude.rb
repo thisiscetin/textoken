@@ -2,16 +2,7 @@ module Textoken
   # This option object excludes words in text via matching regexp
   # Non-excluded words pushed to findings array
   class Exclude
-    attr_reader :regexps, :findings
-
-    def priority
-      1
-    end
-
-    def initialize(values)
-      @regexps  = Searcher.new(values).regexps
-      @findings = Findings.new
-    end
+    include ConditionalOption
 
     # base.text is raw tokens splitted with ' '
     # values are Regexps array to search
