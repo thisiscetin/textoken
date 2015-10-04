@@ -99,6 +99,8 @@ implementations:
 * Ruby 2.0.0
 * Ruby 2.1
 * Ruby 2.2
+* [JRuby](http://jruby.org/)
+* [Rubinius](http://rubini.us/)
 
 If something doesn't work on one of these versions, it's a bug.
 This library may also work (or seem to work) on other Ruby versions or implementations, however support will only be provided for the implementations listed above.
