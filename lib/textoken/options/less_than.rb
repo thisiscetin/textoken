@@ -5,18 +5,14 @@ module Textoken
     include NumericOption
 
     def tokenize(base)
-      base.text.each_with_index do |w, i|
-        findings.push(i, w) if w.length < number
-      end
-      findings.result
+      @base = base
+      tokenize_if { |word| word.length < number }
     end
 
     private
 
-    def check_value(value)
-      return if value.class == Fixnum && value > 1
-      Textoken.type_err "value #{value} is not permitted for
-        less_than option it has to be 2 at least."
+    def validate_option_value(value)
+      validate { value.class == Fixnum && value > 1 }
     end
   end
 end
