@@ -57,10 +57,6 @@ describe Textoken::Options do
       .and_return(option)
   end
 
-  def allow_priority(object, priority)
-    allow(object).to receive(:priority).and_return(priority)
-  end
-
   def init(opt = nil)
     Textoken::Options.new(opt)
   end
