@@ -22,7 +22,7 @@ module Textoken
 
     def validate(&code)
       return if code.call
-      Textoken.type_err "value #{number} is not permitted for
+      Textoken.expression_err "value #{number} is not permitted for
         #{self.class.name} option."
     end
   end

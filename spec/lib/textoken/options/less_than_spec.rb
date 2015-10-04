@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Textoken::LessThan do
+  it_behaves_like 'module sharing option', 5
   include_context 'base mock'
 
   describe '#initialize' do
@@ -8,7 +9,7 @@ describe Textoken::LessThan do
       it 'raises type error' do
         expect do
           Textoken::LessThan.new(Object)
-        end.to raise_error(Textoken::TypeError)
+        end.to raise_error(Textoken::ExpressionError)
       end
     end
 
@@ -16,7 +17,7 @@ describe Textoken::LessThan do
       it 'raises type error' do
         expect do
           Textoken::LessThan.new(1)
-        end.to raise_error(Textoken::TypeError)
+        end.to raise_error(Textoken::ExpressionError)
       end
     end
 

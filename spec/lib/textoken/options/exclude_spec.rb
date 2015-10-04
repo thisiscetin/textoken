@@ -6,6 +6,7 @@ require 'spec_helper'
 describe Textoken::Exclude do
   include_context 'base mock'
   it_behaves_like 'regexp dependent option'
+  it_behaves_like 'module sharing option', 'dates'
 
   describe '#tokenize' do
     context 'when class_in_argument.text is an empty array' do

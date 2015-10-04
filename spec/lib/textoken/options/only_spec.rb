@@ -6,6 +6,7 @@ require 'spec_helper'
 describe Textoken::Only do
   include_context 'base mock'
   it_behaves_like 'regexp dependent option'
+  it_behaves_like 'module sharing option', 'phones'
 
   describe '#tokenize' do
     context 'when text is an empty array' do
