@@ -42,9 +42,9 @@ describe Textoken::MoreThan do
 
     context 'when base class has expected structure' do
       it 'tokenize as expected' do
-        init_mocks(%w(Alfa Beta Thermodynamics Teta),
-                   [[2, 'Thermodynamics']])
-        Textoken::MoreThan.new(5).tokenize(base)
+        init_mocks(%w(Alfa Beta Thermodynamics Teta))
+        t = Textoken::MoreThan.new(5).tokenize(base)
+        expect(t).to eq(%w(Thermodynamics))
       end
     end
   end
