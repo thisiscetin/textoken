@@ -41,7 +41,7 @@ Textoken('Oh, no! Alfa 2000 is at home.', only_regexp: '^[0-9]*$').tokens
 # => ["2000"]
 ```
 
-You can combine all options. Options support multiple option values like **only: 'punctuations, dates, numerics'**
+You can combine all options. 'Only' and 'Exclude' Options support multiple option values like **only: 'punctuations, dates, numerics'**
 
 Public interface of Textoken presents two methods, tokens & word;
 
