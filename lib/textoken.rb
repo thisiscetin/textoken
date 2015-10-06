@@ -9,6 +9,8 @@ require 'textoken/findings'
 require 'textoken/tokenizer'
 require 'textoken/scanner'
 
+require 'textoken/options/modules/numeric_option'
+require 'textoken/options/modules/conditional_option'
 require 'textoken/options/less_than'
 require 'textoken/options/more_than'
 require 'textoken/options/only'

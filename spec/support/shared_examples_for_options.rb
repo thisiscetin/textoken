@@ -22,3 +22,15 @@ RSpec.shared_examples 'regexp dependent option' do
     end
   end
 end
+
+RSpec.shared_examples 'module sharing option' do |value|
+  describe '#tokenize' do
+    context 'setting base when called' do
+      it 'does set the base' do
+        o = described_class.new(value)
+        o.tokenize(base)
+        expect(o.base).to eq(base)
+      end
+    end
+  end
+end
