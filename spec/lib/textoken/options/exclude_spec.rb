@@ -20,14 +20,15 @@ describe Textoken::Exclude do
 
     context 'when class_in_argument has expected structure' do
       it 'tokenize with a singular value from yml file' do
-        init_mocks(%w(Alfonso 444-555-1234 246.555.8888),
-                   [[0, 'Alfonso']])
-        Textoken::Exclude.new('phones').tokenize(base)
+        init_mocks(%w(Alfonso 444-555-1234 246.555.8888))
+        t = Textoken::Exclude.new('phones').tokenize(base)
+        expect(t).to eq(%w(Alfonso))
       end
 
       it 'tokenize with many values from yml file' do
-        init_mocks(%w(10 100.0 Alfa 5,700), [[2, 'Alfa']])
-        Textoken::Exclude.new('numerics').tokenize(base)
+        init_mocks(%w(10 100.0 Alfa 5,700))
+        t = Textoken::Exclude.new('numerics').tokenize(base)
+        expect(t).to eq(%w(Alfa))
       end
     end
   end

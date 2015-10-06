@@ -20,15 +20,15 @@ describe Textoken::Only do
 
     context 'when base class has expected structure' do
       it 'tokenize with a singular value from yml file' do
-        init_mocks(%w(Alfonso 444-555-1234 246.555.8888),
-                   [[1, '444-555-1234'], [2, '246.555.8888']])
-        Textoken::Only.new('phones').tokenize(base)
+        init_mocks(%w(Alfonso 444-555-1234 246.555.8888))
+        r = Textoken::Only.new('phones').tokenize(base)
+        expect(r).to eq(%w(444-555-1234 246.555.8888))
       end
 
       it 'tokenize with many values from yml file' do
-        init_mocks(%w(10 100.0 Alfa 5,700),
-                   [[0, '10'], [1, '100.0'], [3, '5,700']])
-        Textoken::Only.new('numerics').tokenize(base)
+        init_mocks(%w(10 100.0 Alfa 5,700))
+        r = Textoken::Only.new('numerics').tokenize(base)
+        expect(r).to eq(%w(10 100.0 5,700))
       end
     end
   end

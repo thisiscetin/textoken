@@ -42,9 +42,9 @@ describe Textoken::LessThan do
 
     context 'when base class has expected structure' do
       it 'tokenize as expected' do
-        init_mocks(%w(Alfa Beta Thermodynamics Teta),
-                   [[0, 'Alfa'], [1, 'Beta'], [3, 'Teta']])
-        Textoken::LessThan.new(5).tokenize(base)
+        init_mocks(%w(Alfa Beta Thermodynamics Teta))
+        t = Textoken::LessThan.new(5).tokenize(base)
+        expect(t).to eq(%w(Alfa Beta Teta))
       end
     end
   end

@@ -11,10 +11,13 @@ require 'textoken/scanner'
 
 require 'textoken/options/modules/numeric_option'
 require 'textoken/options/modules/conditional_option'
+require 'textoken/options/modules/regexp_option'
 require 'textoken/options/less_than'
 require 'textoken/options/more_than'
 require 'textoken/options/only'
 require 'textoken/options/exclude'
+require 'textoken/options/only_regexp'
+require 'textoken/options/exclude_regexp'
 
 require 'textoken/factories/option_factory'
 

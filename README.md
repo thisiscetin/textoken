@@ -31,11 +31,14 @@ require 'textoken'
 Textoken('Oh, no! Alfa is at home.', only: 'punctuations').tokens
 # => ["Oh", ",", "no", "!", "home", "."]
 
-Textoken('Oh, no! Alfa is at home.', only: 'punctuations', more_than: 3).tokens
-# => ["home", "."]
+Textoken('Oh, no! Alfa is at home.', exclude: 'punctuations', more_than: 3).tokens
+# => ["Alfa"]
 
 Textoken('Oh, no! Alfa is at 01/01/2000 with $1000.', only: 'dates, numerics').words
 # => ["01/01/2000", "$1000."]
+
+Textoken('Oh, no! Alfa 2000 is at home.', only_regexp: '^[0-9]*$').tokens
+# => ["2000"]
 ```
 
 You can combine all options. Options support multiple option values like **only: 'punctuations, dates, numerics'**
@@ -62,13 +65,19 @@ Textoken('Alfa.').words
 
 **more_than:** accepts any positive integer
 
-**only_regexp:** , **exclude_regexp** , and **part-of-speech** options are on the agenda.
+**only_regexp:** accepts any regexp but only one regexp can be given
+
+**exclude_regexp** accepts any regexp but only one regexp can be given
 
 ## Option Meanings
 
 **only:** If a word in text consist of a regexp or regexps, only option includes it in result.
 
+**only_regexp:** If a word in text consist of user given regexp, only_regexp option includes it in result.
+
 **exclude:** If a word in text does not have a regexp at some part, exclude option excludes it from result. Opposite of only.
+
+**exclude_regexp:** If a word in text does not have user given regexp at some part, exclude option excludes it from result. Opposite of only_regexp.
 
 **less_than:** Filters result by the word length less than the option value given.
 
