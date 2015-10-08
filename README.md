@@ -43,7 +43,7 @@ Textoken('Oh, no! Alfa 2000 is at home.', only_regexp: '^[0-9]*$').tokens
 
 You can combine all options. 'Only' and 'Exclude' Options support multiple option values like **only: 'punctuations, dates, numerics'**
 
-Public interface of Textoken presents two methods, tokens & word;
+Public interface of Textoken presents two methods, tokens & words;
 
 ```ruby
 Textoken('Alfa.').tokens 
