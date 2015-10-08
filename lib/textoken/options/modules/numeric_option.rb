@@ -10,9 +10,9 @@ module Textoken
     end
 
     def initialize(value)
-      validate_option_value(value)
       @number = value
       @findings = Findings.new
+      validate_option_value
     end
 
     private
@@ -25,7 +25,7 @@ module Textoken
     end
 
     def validate(&code)
-      return if code.call
+      return if number.class == Fixnum && code.call(number)
       Textoken.expression_err "value #{number} is not permitted for
         #{self.class.name} option."
     end

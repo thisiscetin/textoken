@@ -11,14 +11,11 @@ Gem::Specification.new do |s|
   s.email       = ["mcetin.cm@gmail.com"]
   s.homepage    = "https://github.com/manorie/textoken"
   s.summary     = "Simple and customizable text tokenization gem."
-  s.description = "Textoken is a Ruby library for text tokenization. 
-  This gem extracts words from text with many customizations. 
-  It can be used in many fields like crawling and Natural Language Processing."
+  s.description = "Textoken is a Ruby library for text tokenization. This gem extracts words from text with many customizations. It can be used in many fields like Web Crawling and Natural Language Processing."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_development_dependency 'rspec',   '~> 3.3.0', '>= 3.3.0'
   s.add_development_dependency 'rake',    '~> 10.0'
-  s.add_development_dependency 'pry',     '~> 0'
 end

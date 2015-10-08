@@ -17,8 +17,8 @@ module Textoken
 
     private
 
-    def validate_option_value(value)
-      validate { value.class == Fixnum && value > 1 }
+    def validate_option_value
+      validate { |value| value > 1 }
     end
   end
 end

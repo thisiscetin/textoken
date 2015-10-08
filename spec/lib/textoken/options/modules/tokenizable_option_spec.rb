@@ -43,7 +43,7 @@ describe Textoken::TokenizableOption do
         t = Textoken::TheErrorDumy.new
         expect do
           t.tokenize(Object.new)
-        end.to raise_error
+        end.to raise_error(Textoken::TypeError)
       end
     end
   end

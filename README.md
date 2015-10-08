@@ -6,7 +6,7 @@
 [![Dependency Status](https://gemnasium.com/manorie/textoken.svg)](https://gemnasium.com/manorie/textoken)
 [![Gem Version](https://badge.fury.io/rb/textoken.svg)](http://badge.fury.io/rb/textoken)
 
-Textoken is a Ruby library for text tokenization. This gem extracts words from text with many customizations. It can be used in many fields like crawling and Natural Language Processing.
+Textoken is a Ruby library for text tokenization. This gem extracts words from text with many customizations. It can be used in many fields like Web Crawling and Natural Language Processing.
 
 ## Basic Usage
 
@@ -43,7 +43,7 @@ Textoken('Oh, no! Alfa 2000 is at home.', only_regexp: '^[0-9]*$').tokens
 
 You can combine all options. 'Only' and 'Exclude' Options support multiple option values like **only: 'punctuations, dates, numerics'**
 
-Public interface of Textoken presents two methods, tokens & words;
+Public interface of Textoken presents two methods, **tokens** & **words**
 
 ```ruby
 Textoken('Alfa.').tokens 
@@ -57,31 +57,31 @@ Textoken('Alfa.').words
 
 ## Current Options
 
-**only:** accepts any regexp defined in [option_values.yml](//github.com/manorie/textoken/blob/development/lib/textoken/regexps/option_values.yml)
+- **only:** Accepts any regexp defined in [option_values.yml](//github.com/manorie/textoken/blob/development/lib/textoken/regexps/option_values.yml)
 
-**exclude:** accepts any regexp defined in [option_values.yml](https://github.com/manorie/textoken/blob/development/lib/textoken/regexps/option_values.yml)
+- **only_regexp:** Accepts any regexp but only one regexp can be given.
 
-**less_than:** accepts any integer bigger than 1
+- **exclude:** Accepts any regexp defined in [option_values.yml](https://github.com/manorie/textoken/blob/development/lib/textoken/regexps/option_values.yml)
 
-**more_than:** accepts any positive integer
+- **exclude_regexp** Accepts any regexp but only one regexp can be given.
 
-**only_regexp:** accepts any regexp but only one regexp can be given
+- **less_than:** Accepts any integer bigger than 1.
 
-**exclude_regexp** accepts any regexp but only one regexp can be given
+- **more_than:** Accepts any positive integer.
 
 ## Option Meanings
 
-**only:** If a word in text consist of a regexp or regexps, only option includes it in result.
+- **only:** If a word in text consist of a regexp or regexps, only option includes it in result.
 
-**only_regexp:** If a word in text consist of user given regexp, only_regexp option includes it in result.
+- **only_regexp:** If a word in text consist of user given regexp, only_regexp option includes it in result.
 
-**exclude:** If a word in text does not have a regexp at some part, exclude option excludes it from result. Opposite of only.
+- **exclude:** If a word in text does not have a regexp at some part, exclude option excludes it from result. Opposite of only.
 
-**exclude_regexp:** If a word in text does not have user given regexp at some part, exclude option excludes it from result. Opposite of only_regexp.
+- **exclude_regexp:** If a word in text does not have user given regexp at some part, exclude option excludes it from result. Opposite of only_regexp.
 
-**less_than:** Filters result by the word length less than the option value given.
+- **less_than:** Filters result by the word length less than the option value given.
 
-**more_than:** Filters result by the word length bigger than the option value given.
+- **more_than:** Filters result by the word length bigger than the option value given.
 
 
 ## Installation

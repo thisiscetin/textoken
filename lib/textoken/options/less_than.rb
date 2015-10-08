@@ -10,8 +10,8 @@ module Textoken
       tokenize_if { |word| word.length < number }
     end
 
-    def validate_option_value(value)
-      validate { value.class == Fixnum && value > 1 }
+    def validate_option_value
+      validate { |value| value > 1 }
     end
   end
 end
