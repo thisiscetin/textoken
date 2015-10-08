@@ -1,7 +1,9 @@
 module Textoken
   # This module will be shared in options like, more_than and less_than
   module NumericOption
-    attr_reader :number, :findings, :base
+    include TokenizableOption
+
+    attr_reader :number, :findings
 
     def priority
       2
@@ -12,6 +14,8 @@ module Textoken
       @number = value
       @findings = Findings.new
     end
+
+    private
 
     def tokenize_if(&code)
       base.text.each_with_index do |w, i|

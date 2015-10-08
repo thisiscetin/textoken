@@ -4,12 +4,11 @@ module Textoken
   class LessThan
     include NumericOption
 
-    def tokenize(base)
-      @base = base
+    private
+
+    def tokenize_condition
       tokenize_if { |word| word.length < number }
     end
-
-    private
 
     def validate_option_value(value)
       validate { value.class == Fixnum && value > 1 }
