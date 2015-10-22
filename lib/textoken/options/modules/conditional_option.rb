@@ -1,6 +1,8 @@
 module Textoken
   # This module will be shared in options like, only and exclude
   module ConditionalOption
+    include TokenizableOption
+
     attr_reader :regexps, :findings, :base
 
     def priority
@@ -11,6 +13,8 @@ module Textoken
       @regexps  = Searcher.new(values).regexps
       @findings = Findings.new
     end
+
+    private
 
     def tokenize_if(&block)
       regexps.each do |r|
