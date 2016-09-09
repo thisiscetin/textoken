@@ -27,7 +27,7 @@ module Textoken
 
     # will be used for finding punctuations
     def default_regexp
-      Regexp.new('\W+')
+      /[^[:word:]+]/
     end
   end
 end
