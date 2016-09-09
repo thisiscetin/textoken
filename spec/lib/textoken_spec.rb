@@ -30,6 +30,11 @@ describe Textoken do
       expect(tokens('Alfa\'s home is nice.')).to eq(e)
     end
 
+    it 'handles special characters' do
+      e = %w(þú ert ástin mín .)
+      expect(tokens('þú ert ástin mín.')).to eq(e)
+    end
+
     it 'returns words as expected' do
       e = %w(Alfa's home is nice.)
       expect(words('Alfa\'s home is nice.')).to eq(e)
