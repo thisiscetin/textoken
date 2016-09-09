@@ -46,11 +46,11 @@ You can combine all options. 'Only' and 'Exclude' Options support multiple optio
 Public interface of Textoken presents two methods, **tokens** & **words**
 
 ```ruby
-Textoken('Alfa.').tokens 
+Textoken('Alfa.').tokens
 # => ["Alfa", "."]
 # => splits punctuations by default whereas,
 
-Textoken('Alfa.').words 
+Textoken('Alfa.').words
 # => ["Alfa."]
 # => does not split punctuations.
 ```
@@ -107,7 +107,8 @@ implementations:
 * Ruby 1.9.3
 * Ruby 2.0.0
 * Ruby 2.1
-* Ruby 2.2
+* Ruby 2.2.5
+* Ruby 2.3.1
 * [JRuby](http://jruby.org/)
 
 If something doesn't work on one of these versions, it's a bug.
