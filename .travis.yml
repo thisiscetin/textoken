@@ -2,10 +2,10 @@ language: ruby
 cache: bundler
 sudo: false
 rvm:
- - 1.9.3
  - 2.0.0
  - 2.1
- - 2.2
+ - 2.2.5
+ - 2.3.1
  - ruby-head
 # uncomment this line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec

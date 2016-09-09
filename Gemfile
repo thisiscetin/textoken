@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'coveralls',  '~> 0.7'
+gem 'coveralls',  '0.8.15'
 
 gemspec
