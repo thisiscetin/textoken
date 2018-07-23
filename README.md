@@ -3,7 +3,6 @@
 [![Build Status](https://travis-ci.org/manorie/textoken.svg?branch=development)](https://travis-ci.org/manorie/textoken?branch=development)
 [![Coverage Status](https://coveralls.io/repos/manorie/textoken/badge.svg?branch=development&service=github)](https://coveralls.io/github/manorie/textoken?branch=development)
 [![Code Climate](https://codeclimate.com/github/manorie/textoken/badges/gpa.svg)](https://codeclimate.com/github/manorie/textoken)
-[![Dependency Status](https://gemnasium.com/manorie/textoken.svg)](https://gemnasium.com/manorie/textoken)
 [![Gem Version](https://badge.fury.io/rb/textoken.svg)](http://badge.fury.io/rb/textoken)
 
 Textoken is a Ruby library for text tokenization. This gem extracts words from text with many customizations. It can be used in many fields like Web Crawling and Natural Language Processing.
