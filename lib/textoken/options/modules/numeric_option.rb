@@ -25,7 +25,7 @@ module Textoken
     end
 
     def validate(&code)
-      return if number.class == Fixnum && code.call(number)
+      return if number.class == Integer && code.call(number)
       Textoken.expression_err "value #{number} is not permitted for
         #{self.class.name} option."
     end
