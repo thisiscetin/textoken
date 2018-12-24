@@ -27,7 +27,7 @@ module Textoken
     private
 
     def type_check(i, word)
-      return if word.is_a?(String) && (i.is_a?(Fixnum) || i.is_a?(Float))
+      return if word.is_a?(String) && (i.is_a?(Integer) || i.is_a?(Float))
       Textoken.type_err("#{word} and #{i} has to be a String and Integer")
     end
   end
