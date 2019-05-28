@@ -19,7 +19,7 @@ module Textoken
 
     def partition(scan, word)
       scan.each do |p|
-        word = word.gsub(p, ' ' + p + ' ')
+        word = word.gsub(p, " #{p} ")
       end
       word.split(' ')
     end
