@@ -1,6 +1,7 @@
 require 'yaml'
 
 require 'textoken/version'
+require 'textoken/compat'
 require 'textoken/base'
 require 'textoken/errors'
 require 'textoken/searcher'
