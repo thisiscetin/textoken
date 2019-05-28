@@ -1,7 +1,4 @@
 module Textoken
-  class ExpressionError < Exception
-  end
-
-  class TypeError < Exception
-  end
+  ExpressionError = Class.new(StandardError)
+  TypeError       = Class.new(StandardError)
 end
