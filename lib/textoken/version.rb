@@ -1,3 +1,3 @@
 module Textoken
-  VERSION = "1.1.2"
+  VERSION = "1.2.1"
 end

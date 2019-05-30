@@ -107,6 +107,11 @@ implementations:
 * Ruby 2.1
 * Ruby 2.2.5
 * Ruby 2.3.1
+* Ruby 2.4.6
+* Ruby 2.5.5
+* Ruby 2.6.3
+* Ruby ruby-head
+
 * [JRuby](http://jruby.org/)
 
 If something doesn't work on one of these versions, it's a bug.
